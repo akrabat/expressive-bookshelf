@@ -1,0 +1,7 @@
+.idea
+composer.phar
+build/
+clover.xml
+coveralls-upload.json
+phpunit.xml
+vendor/
