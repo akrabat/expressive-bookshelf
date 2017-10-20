@@ -12,4 +12,23 @@
             or head back to <a href="{{ path('home') }}">Home</a>.
         </p>
     {% endif %}
+
+    {% if error %}
+        <h2>Error details</h2>
+        <p>Message: <strong>{{ error.getMessage() }}</strong></p>
+        <p>in <tt>{{ error.getFile()|replace({(__DIR__): ''}) }}:{{ error.getLine() }}</tt></p>
+
+        <p>Trace:</p>
+        <pre>{{ error.getTraceAsString() }}</pre>
+
+        {% set prev = error.getPrevious() %}
+        {% for i in 1..10000 if prev %}
+            <h3>Previous error</h3>
+            <p>Message: <strong>{{ prev.getMessage() }}</strong></p>
+            <p>in <tt>{{ prev.getFile() }}:{{ prev.getLine() }}</tt></p>
+            <p>Trace:</p>
+            <pre>{{ prev.getTraceAsString() }}</pre>
+            {% set prev = prev.getPrevious() %}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

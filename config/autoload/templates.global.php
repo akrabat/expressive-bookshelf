@@ -28,6 +28,7 @@ return [
         ],
         'globals' => [
             // Variables to pass to all twig templates
+            '__DIR__' => realpath(__DIR__ . '/../../') . '/',
         ],
         // 'timezone' => 'default timezone identifier; e.g. America/Chicago',
     ],
