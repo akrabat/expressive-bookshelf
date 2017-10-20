@@ -22,6 +22,11 @@ return [
             'Zend\Expressive\Whoops'            => Container\WhoopsFactory::class,
             'Zend\Expressive\WhoopsPageHandler' => Container\WhoopsPageHandlerFactory::class,
         ],
+        'delegators' => [
+            'Zend\Expressive\WhoopsPageHandler' => [
+                App\Factory\WhoopsPageHandlerDelegatorFactory::class,
+            ]
+        ],
     ],
 
     'whoops' => [
