@@ -1,9 +1,8 @@
 <?php
-
-namespace App;
+namespace Bookshelf;
 
 /**
- * The configuration provider for the App module
+ * The configuration provider for the Author module
  *
  * @see https://docs.zendframework.com/zend-component-installer/
  */
@@ -25,16 +24,11 @@ class ConfigProvider
         ];
     }
 
-    /**
-     * Returns the container dependencies
-     *
-     * @return array
-     */
-    public function getDependencies()
+    public function getDependencies() : array
     {
         return [
             'factories'  => [
-                Action\HomePageAction::class => Action\HomePageFactory::class,
+                Action\AuthorListAction::class => Factory\AuthorListActionFactory::class,
             ],
         ];
     }
@@ -48,8 +42,7 @@ class ConfigProvider
     {
         return [
             'paths' => [
-                'error'  => [__DIR__ . '/../templates/error'],
-                'layout' => [__DIR__ . '/../templates/layout'],
+                'bookshelf'    => [__DIR__ . '/../templates/bookshelf'],
             ],
         ];
     }

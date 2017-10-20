@@ -27,3 +27,5 @@
  */
 
 $app->get('/', App\Action\HomePageAction::class, 'home');
+
+$app->get('/authors', Bookshelf\Action\AuthorListAction::class, 'author.list');
