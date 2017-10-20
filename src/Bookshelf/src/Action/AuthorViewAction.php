@@ -7,14 +7,14 @@ use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Zend\Expressive\Twig\TwigRenderer;
 
-class AuthorListAction implements ServerMiddlewareInterface
+class AuthorViewAction implements ServerMiddlewareInterface
 {
     private $template;
     private $authorMapper;
 
-    public function __construct(TemplateRendererInterface $template, AuthorMapper $authorMapper)
+    public function __construct(TwigRenderer $template, AuthorMapper $authorMapper)
     {
         $this->template = $template;
         $this->authorMapper = $authorMapper;
@@ -22,10 +22,11 @@ class AuthorListAction implements ServerMiddlewareInterface
 
     public function process(ServerRequestInterface $request, DelegateInterface $delegate)
     {
+        $id = (int)$request->getAttribute('id');
         $data = [
-            'authors' => $this->authorMapper->fetchAll(),
+            'author' => $this->authorMapper->loadById($id),
         ];
 
-        return new HtmlResponse($this->template->render('bookshelf::author-list', $data));
+        return new HtmlResponse($this->template->render('bookshelf::author-view', $data));
     }
 }

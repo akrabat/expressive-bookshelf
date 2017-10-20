@@ -29,3 +29,4 @@
 $app->get('/', App\Action\HomePageAction::class, 'home');
 
 $app->get('/authors', Bookshelf\Action\AuthorListAction::class, 'author.list');
+$app->get('/authors/{id:\d+}', Bookshelf\Action\AuthorViewAction::class, 'author.view');

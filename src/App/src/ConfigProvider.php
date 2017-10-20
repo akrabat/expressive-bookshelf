@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Spot\Locator as Spot;
+
 /**
  * The configuration provider for the App module
  *
@@ -35,6 +37,8 @@ class ConfigProvider
         return [
             'factories'  => [
                 Action\HomePageAction::class => Action\HomePageFactory::class,
+
+                Spot::class => Factory\SpotFactory::class,
             ],
         ];
     }

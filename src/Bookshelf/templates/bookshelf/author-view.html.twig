@@ -1,0 +1,18 @@
+{% extends '@layout/default.html.twig' %}
+
+
+{% set title = 'Books by ' ~ author.name %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>{{ author.biography|default("") }}</p>
+
+
+<p>
+    <a href="{{ path('author.list') }}">Return to authors</a>
+</p>
+
+{% endblock %}
+{% set title = 'Books by ' ~ author.name %}

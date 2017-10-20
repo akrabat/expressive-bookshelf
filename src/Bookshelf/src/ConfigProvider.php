@@ -29,6 +29,7 @@ class ConfigProvider
         return [
             'factories'  => [
                 Action\AuthorListAction::class => Factory\AuthorListActionFactory::class,
+                Action\AuthorViewAction::class => Factory\AuthorViewActionFactory::class,
             ],
         ];
     }
