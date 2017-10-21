@@ -2,7 +2,9 @@
 
 namespace Bookshelf;
 
-use Spot\Entity as Entity;
+use Spot\Entity;
+use Spot\EntityInterface;
+use Spot\MapperInterface;
 
 class AuthorEntity extends Entity
 {
@@ -16,6 +18,13 @@ class AuthorEntity extends Entity
             'id'        => ['type' => 'integer', 'autoincrement' => true, 'primary' => true],
             'name'      => ['type' => 'string', 'required' => true],
             'biography' => ['type' => 'text', 'required' => true],
+        ];
+    }
+
+    public static function relations(MapperInterface $mapper, EntityInterface $entity)
+    {
+        return [
+            'books' => $mapper->hasMany($entity, BookEntity::class, 'author_id')
         ];
     }
 }

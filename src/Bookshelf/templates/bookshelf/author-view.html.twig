@@ -1,7 +1,6 @@
 {% extends '@layout/default.html.twig' %}
 
-
-{% set title = 'Books by ' ~ author.name %}
+{% set title = author.name %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -10,9 +9,16 @@
 <p>{{ author.biography|default("") }}</p>
 
 
+<h2>Books</h2>
+<ul>
+{% for book in author.books %}
+    <li>{{ book.title }}</li>
+{% endfor %}
+</ul>
+
+
 <p>
     <a href="{{ path('author.list') }}">Return to authors</a>
 </p>
 
 {% endblock %}
-{% set title = 'Books by ' ~ author.name %}
