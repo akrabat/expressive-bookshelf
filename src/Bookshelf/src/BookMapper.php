@@ -10,7 +10,7 @@ class BookMapper extends Mapper
 {
     public function fetchAll() : Query
     {
-        return $this->all()->order(['name' => 'ASC']);
+        return $this->all()->order(['title' => 'ASC']);
     }
 
     public function loadById(int $id) : BookEntity

@@ -33,3 +33,6 @@ $app->get('/authors/{id:\d+}', Bookshelf\Action\AuthorViewAction::class, 'author
 $app->get('/authors/{id:\d+}/edit', Bookshelf\Action\AuthorEditAction::class, 'author.edit');
 $app->post('/authors/{id:\d+}/update', Bookshelf\Action\AuthorUpdateAction::class, 'author.update');
 $app->route('/authors/{id:\d+}/delete', Bookshelf\Action\AuthorDeleteAction::class, ['GET', 'POST'], 'author.delete');
+
+$app->get('/books', Bookshelf\Action\BookListAction::class, 'book.list');
+$app->get('/books/{id:\d+}', Bookshelf\Action\BookViewAction::class, 'book.view');

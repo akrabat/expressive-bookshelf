@@ -33,6 +33,9 @@ class ConfigProvider
                 Action\AuthorEditAction::class   => Factory\AuthorEditActionFactory::class,
                 Action\AuthorUpdateAction::class => Factory\AuthorUpdateActionFactory::class,
                 Action\AuthorDeleteAction::class => Factory\AuthorDeleteActionFactory::class,
+
+                Action\BookListAction::class => Factory\BookListActionFactory::class,
+                Action\BookViewAction::class => Factory\BookViewActionFactory::class,
             ],
         ];
     }

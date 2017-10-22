@@ -1,0 +1,21 @@
+{% extends '@layout/default.html.twig' %}
+
+{% set title = book.title %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{{ flash_messages() }}
+
+<p>Author: <a href="{{ path('author.view', {id: book.author.id}) }}">{{ book.author.name }}</a></p>
+{% if book.isbn is defined %}
+    <p>ISBN: {{ book.isbn }}</p>
+{% endif %}
+<p>{{ book.description|default('') }}</p>
+
+
+<p>
+    <a href="{{ path('book.list') }}">Return to books</a>
+</p>
+
+{% endblock %}

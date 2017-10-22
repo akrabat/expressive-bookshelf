@@ -1,0 +1,25 @@
+{% extends '@layout/default.html.twig' %}
+
+
+{% set title = 'Authors' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{{ flash_messages() }}
+
+<ul>
+{% for book in books %}
+    <li>
+        <a href="{{ path('book.view', {id: book.id}) }}">{{ book.title }}</a>
+        by
+        <a href="{{ path('author.view', {id: book.author.id}) }}">{{ book.author.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+<p>
+    <a class="btn btn-default" href="{{ path('author.edit', {id: 0}) }}">Add new author</a>
+</p>
+
+{% endblock %}
