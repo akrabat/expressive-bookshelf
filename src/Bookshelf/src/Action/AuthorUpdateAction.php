@@ -32,14 +32,19 @@ class AuthorUpdateAction implements MiddlewareInterface
         if ($inputFilter->isValid()) {
             $data = $inputFilter->getValues();
 
-            $author = $this->authorMapper->loadById($id);
+            if ($id) {
+                $author = $this->authorMapper->loadById($id);
+            } else {
+                $author = new AuthorEntity();
+            }
             $author->data($data);
             $result = $this->authorMapper->save($author);
 
+            $message = $id ? 'Author updated' : 'Author created';
             $flash = $request->getAttribute('flash');
-            $flash->addMessage('message', 'Author updated');
+            $flash->addMessage('message', $message);
 
-            $url = $this->router->generateUri('author.view', ['id' => $id]);
+            $url = $this->router->generateUri('author.view', ['id' => $author->id]);
             return new RedirectResponse($url);
         }
 

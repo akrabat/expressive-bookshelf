@@ -2,6 +2,7 @@
 
 namespace Bookshelf\Action;
 
+use Bookshelf\AuthorEntity;
 use Bookshelf\AuthorMapper;
 use Bookshelf\Form\AuthorForm;
 use Interop\Http\ServerMiddleware\DelegateInterface;
@@ -31,7 +32,11 @@ class AuthorEditAction implements ServerMiddlewareInterface
         $errors = $flash->getFirstMessage('errors');
         $submittedData = $flash->getFirstMessage('submitted-data');
 
-        $author = $this->authorMapper->loadById($id);
+        if ($id) {
+            $author = $this->authorMapper->loadById($id);
+        } else {
+            $author = new AuthorEntity;
+        }
         if ($submittedData) {
             $author->data($submittedData);
         }

@@ -6,7 +6,7 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-<form method="POST" action="{{ path('author.update', {id: author.id}) }}">
+<form method="POST" action="{{ path('author.update', {id: author.id|default(0)}) }}">
     {% if errors.form is defined %}
     <div class="form-group has-error">
         <span class="help-block">{{ errors.form }}</span>
@@ -15,7 +15,7 @@
 
     <div class="form-group {% if errors.name is defined %}has-error{% endif %}">
         <label class="control-label" for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{ author.name }}" >
+        <input type="text" class="form-control" id="name" name="name" value="{{ author.name|default('') }}" >
         {% if errors.name is defined %}<span class="help-block">{{ errors.name|first }}</span>{% endif %}
     </div>
 
@@ -26,7 +26,11 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
-    <a class="btn btn-default" href="{{ path('author.view', {id: author.id}) }}">Cancel</a>
+    {% if author.id is defined %}
+        <a class="btn btn-default" href="{{ path('author.view', {id: author.id}) }}">Cancel</a>
+    {% else %}
+        <a class="btn btn-default" href="{{ path('author.list') }}">Cancel</a>
+    {% endif %}
 </form>
 
 {% endblock %}
