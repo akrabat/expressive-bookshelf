@@ -3,13 +3,30 @@
 An example [Zend Expressive](https://zendframework.github.io/zend-expressive/) application.
 
 
-Run using:
+![Screenshot of Expressive Bookshelf](https://i.19ft.com/ba156e39.png)
+
+
+## Setup
+
+This project uses Composer. Run composer install to install the dependencies:
+
+    $ composer install
+
+You'll also need a copy of the database:
+
+    $ cp data/bookshelf.db.dist data/bookshelf.db
+    $ chmod a+w data/bookshelf.db
+
+
+## Run
+
+You can run using the built-in PHP server:
 
 ```bash 
 $ php -S 0.0.0.0:8888 -t public
 ```
 
-You can then browse to http://localhost:8888.
+Browse to http://localhost:8888 to view the application.
 
 ## Application Development Mode Tool
 
