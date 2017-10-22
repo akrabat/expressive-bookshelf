@@ -7,14 +7,14 @@ use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Twig\TwigRenderer;
+use Zend\Expressive\Template\TemplateRendererInterface;
 
 class AuthorViewAction implements ServerMiddlewareInterface
 {
     private $template;
     private $authorMapper;
 
-    public function __construct(TwigRenderer $template, AuthorMapper $authorMapper)
+    public function __construct(TemplateRendererInterface $template, AuthorMapper $authorMapper)
     {
         $this->template = $template;
         $this->authorMapper = $authorMapper;
