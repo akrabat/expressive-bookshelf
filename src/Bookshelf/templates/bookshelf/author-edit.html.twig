@@ -1,0 +1,32 @@
+{% extends '@layout/default.html.twig' %}
+
+{% set title = 'Edit author details' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form method="POST" action="{{ path('author.update', {id: author.id}) }}">
+    {% if errors.form is defined %}
+    <div class="form-group has-error">
+        <span class="help-block">{{ errors.form }}</span>
+    </div>
+    {% endif %}
+
+    <div class="form-group {% if errors.name is defined %}has-error{% endif %}">
+        <label class="control-label" for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ author.name }}" >
+        {% if errors.name is defined %}<span class="help-block">{{ errors.name|first }}</span>{% endif %}
+    </div>
+
+    <div class="form-group {% if errors.biography is defined %}has-error{% endif %}">
+        <label class="control-label" for="biography">Biography</label>
+        <textarea class="form-control" id="biography" name="biography" rows="7">{{ author.biography|default('') }}</textarea>
+        {% if errors.biography is defined %}<span class="help-block">{{ errors.biography|first }}</span>{% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-default" href="{{ path('author.view', {id: author.id}) }}">Cancel</a>
+</form>
+
+{% endblock %}

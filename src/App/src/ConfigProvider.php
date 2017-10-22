@@ -35,10 +35,14 @@ class ConfigProvider
     public function getDependencies()
     {
         return [
+            'invokables'  => [
+                \Slim\Flash\Messages::class => \Slim\Flash\Messages::class,
+                Middleware\SlimFlashMiddleware::class => Middleware\SlimFlashMiddleware::class,
+            ],
             'factories'  => [
                 Action\HomePageAction::class => Action\HomePageFactory::class,
-
                 Spot::class => Factory\SpotFactory::class,
+                TwigExtension\FlashMessagesTwigExtension::class => Factory\FlashMessagesTwigExtensionFactory::class,
             ],
         ];
     }

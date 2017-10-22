@@ -5,8 +5,9 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
+{{ flash_messages() }}
 
-<p>{{ author.biography|default("") }}</p>
+<p>{{ author.biography }}</p>
 
 
 <h2>Books</h2>
@@ -19,6 +20,7 @@
 
 <p>
     <a href="{{ path('author.list') }}">Return to authors</a>
+    | <a href="{{ path('author.edit', {id: author.id}) }}">Edit author's details</a>
 </p>
 
 {% endblock %}

@@ -22,6 +22,7 @@ return [
         'assets_version' => null,
         'extensions'     => [
             // extension service names or instances
+            App\TwigExtension\FlashMessagesTwigExtension::class,
         ],
         'runtime_loaders' => [
             // runtime loader names or instances

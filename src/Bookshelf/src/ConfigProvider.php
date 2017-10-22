@@ -28,8 +28,10 @@ class ConfigProvider
     {
         return [
             'factories'  => [
-                Action\AuthorListAction::class => Factory\AuthorListActionFactory::class,
-                Action\AuthorViewAction::class => Factory\AuthorViewActionFactory::class,
+                Action\AuthorListAction::class   => Factory\AuthorListActionFactory::class,
+                Action\AuthorViewAction::class   => Factory\AuthorViewActionFactory::class,
+                Action\AuthorEditAction::class   => Factory\AuthorEditActionFactory::class,
+                Action\AuthorUpdateAction::class => Factory\AuthorUpdateActionFactory::class,
             ],
         ];
     }

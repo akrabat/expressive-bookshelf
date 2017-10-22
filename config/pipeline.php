@@ -33,6 +33,8 @@ $app->pipe(ServerUrlMiddleware::class);
 // - $app->pipe('/docs', $apiDocMiddleware);
 // - $app->pipe('/files', $filesMiddleware);
 
+$app->pipe(App\Middleware\SlimFlashMiddleware::class);
+
 // Register the routing middleware in the middleware pipeline
 $app->pipeRoutingMiddleware();
 $app->pipe(ImplicitHeadMiddleware::class);

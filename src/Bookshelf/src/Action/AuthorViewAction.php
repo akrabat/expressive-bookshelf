@@ -4,12 +4,12 @@ namespace Bookshelf\Action;
 
 use Bookshelf\AuthorMapper;
 use Interop\Http\ServerMiddleware\DelegateInterface;
-use Interop\Http\ServerMiddleware\MiddlewareInterface as ServerMiddlewareInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
-class AuthorViewAction implements ServerMiddlewareInterface
+class AuthorViewAction implements MiddlewareInterface
 {
     private $template;
     private $authorMapper;
