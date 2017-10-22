@@ -1,0 +1,16 @@
+{% extends '@layout/default.html.twig' %}
+
+{% set title = 'Delete author' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>Are you sure that you want to delete {{ author.name }}?</p>
+
+<form method="POST" action="{{ path('author.delete', {id: author.id|default(0)}) }}">
+    <button type="submit" name="submit" value="yes" class="btn btn-danger">Delete</button>
+    <a class="btn btn-default" href="{{ path('author.view', {id: author.id}) }}">Cancel</a>
+</form>
+
+{% endblock %}

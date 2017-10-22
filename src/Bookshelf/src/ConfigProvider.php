@@ -32,6 +32,7 @@ class ConfigProvider
                 Action\AuthorViewAction::class   => Factory\AuthorViewActionFactory::class,
                 Action\AuthorEditAction::class   => Factory\AuthorEditActionFactory::class,
                 Action\AuthorUpdateAction::class => Factory\AuthorUpdateActionFactory::class,
+                Action\AuthorDeleteAction::class => Factory\AuthorDeleteActionFactory::class,
             ],
         ];
     }
