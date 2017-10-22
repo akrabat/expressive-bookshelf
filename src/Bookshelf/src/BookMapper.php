@@ -3,15 +3,17 @@
 namespace Bookshelf;
 
 use Spot\Mapper;
+use Spot\Query;
+use RuntimeException;
 
 class BookMapper extends Mapper
 {
-    public function fetchAll()
+    public function fetchAll() : Query
     {
         return $this->all()->order(['name' => 'ASC']);
     }
 
-    public function loadById(int $id)
+    public function loadById(int $id) : BookEntity
     {
         $record = $this->first(['id' => $id]);
 

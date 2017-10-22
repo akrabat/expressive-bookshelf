@@ -3,20 +3,22 @@
 namespace Bookshelf;
 
 use Spot\Mapper;
+use Spot\Query;
+use RuntimeException;
 
 class AuthorMapper extends Mapper
 {
-    public function fetchAll()
+    public function fetchAll() : Query
     {
         return $this->all()->order(['name' => 'ASC']);
     }
 
-    public function loadById(int $id)
+    public function loadById(int $id) : AuthorEntity
     {
         $record = $this->first(['id' => $id]);
 
         if (!$record) {
-            throw new \RuntimeException("Author not found", 404);
+            throw new RuntimeException("Author not found", 404);
         }
 
         return $record;
